@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    let noteStack = UIStackView()
+    let canvasView = CanvasView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,43 +18,41 @@ class ViewController: UIViewController {
     
     override func loadView() {
         view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .gray
         
-        let addButton = UIButton()
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.setTitle("+", for: .normal)
-        addButton.setTitleColor(.white, for: .normal)
-        addButton.backgroundColor = .black
-        addButton.addTarget(self, action: #selector(addNote), for: .touchUpInside)
-        view.addSubview(addButton)
-        let addButtonConstraints = [
-            addButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-            addButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
-        ]
+        addCanvas()
+        addPanListener()
         
-        noteStack.translatesAutoresizingMaskIntoConstraints = false
-        noteStack.axis = .vertical
-        view.addSubview(noteStack)
-        let noteStackConstraints = [
-            noteStack.topAnchor.constraint(equalTo: addButton.bottomAnchor),
-            noteStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            noteStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-        ]
-        
-        let firstNote = UITextField()
-        firstNote.translatesAutoresizingMaskIntoConstraints = false
-        firstNote.textColor = .black
-        firstNote.text = "Your first note!"
-        noteStack.addArrangedSubview(firstNote)
-        
-        NSLayoutConstraint.activate(noteStackConstraints + addButtonConstraints)
+        addNote(at: canvasView.center)
     }
     
-    @objc private func addNote() {
+    private func addCanvas() {
+        canvasView.position(in: view)
+    }
+    
+    private func addPanListener() {
+        let gestureRecognizer = UIPanGestureRecognizer(target: self, action: .pan)
+        canvasView.addGestureRecognizer(gestureRecognizer)
+    }
+    
+    @objc func pan(gesture: UIPanGestureRecognizer) {
+        canvasView.offset(by: gesture.translation(in: view))
+        gesture.setTranslation(.zero, in: view)
+    }
+    
+    @objc private func addNote(at location: CGPoint) {
         let newNote = UITextField()
+        newNote.translatesAutoresizingMaskIntoConstraints = false
         newNote.textColor = .black
         newNote.placeholder = "New Note"
-        noteStack.addArrangedSubview(newNote)
+        canvasView.addSubview(newNote)
+        NSLayoutConstraint.activate([
+            newNote.centerXAnchor.constraint(equalTo: canvasView.centerXAnchor, constant: location.x),
+            newNote.centerYAnchor.constraint(equalTo: canvasView.centerYAnchor, constant: location.y),
+        ])
     }
 }
 
+fileprivate extension Selector {
+    static let pan = #selector(ViewController.pan(gesture:))
+}

@@ -10,6 +10,8 @@
 		167BD1561FFED89500A5CA67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167BD1551FFED89500A5CA67 /* AppDelegate.swift */; };
 		167BD1581FFED89500A5CA67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 167BD1571FFED89500A5CA67 /* ViewController.swift */; };
 		167BD15D1FFED89500A5CA67 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 167BD15C1FFED89500A5CA67 /* Assets.xcassets */; };
+		16E9871F20101AAA0056A308 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E9871E20101AAA0056A308 /* CanvasView.swift */; };
+		16E9872120101AE10056A308 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16E9872020101AE10056A308 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		167BD1571FFED89500A5CA67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		167BD15C1FFED89500A5CA67 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		167BD1611FFED89500A5CA67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16E9871E20101AAA0056A308 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		16E9872020101AE10056A308 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +58,8 @@
 				167BD1571FFED89500A5CA67 /* ViewController.swift */,
 				167BD15C1FFED89500A5CA67 /* Assets.xcassets */,
 				167BD1611FFED89500A5CA67 /* Info.plist */,
+				16E9871E20101AAA0056A308 /* CanvasView.swift */,
+				16E9872020101AE10056A308 /* CustomView.swift */,
 			);
 			path = BulletBook;
 			sourceTree = "<group>";
@@ -129,7 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				167BD1581FFED89500A5CA67 /* ViewController.swift in Sources */,
+				16E9872120101AE10056A308 /* CustomView.swift in Sources */,
 				167BD1561FFED89500A5CA67 /* AppDelegate.swift in Sources */,
+				16E9871F20101AAA0056A308 /* CanvasView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
